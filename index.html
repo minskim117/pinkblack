@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>코코비 핑크 블랙 히어로</title>
+    <meta name="description" content="사랑과 어둠의 힘으로 몬스터로부터 코코비 마을을 지키는 키즈 히어로 게임, 코코비 핑크 블랙 히어로" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <style>
+      html, body { margin: 0; background: #000; }
+    </style>
+  </head>
+  <body>
+    <!-- 상단 네비게이션 (스크롤해도 고정, 좁은 화면에서는 숨기고 삼선 메뉴) -->
+    <div class="gnb-bg" aria-hidden="true"></div>
+    <header class="gnb" id="gnb">
+      <a class="gnb-logo" href="#top" aria-label="맨 위로"><img id="gnbLogo" alt="" /></a>
+      <nav class="gnb-menu" id="gnbMenu" aria-label="주요 메뉴"></nav>
+    </header>
+
+    <!-- 고정 UI -->
+    <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- 전체 화면 메뉴 -->
+    <nav class="menu" id="menu" aria-hidden="true">
+      <img class="menu-logo" id="menuLogo" alt="" />
+      <ul class="menu-list" id="menuList"></ul>
+      <div class="menu-divider"></div>
+      <div class="menu-social" id="menuSocial"></div>
+      <select class="menu-lang" aria-label="언어 선택">
+        <option>한국어</option><option>English</option><option>日本語</option>
+      </select>
+    </nav>
+
+    <main>
+      <!-- ── TOP ── -->
+      <section id="top" class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-inner">
+          <div class="logo" id="heroLogo"></div>
+          <button class="play-diamond" id="heroPlay" aria-label="트레일러 재생">
+            <img id="heroPlayImg" alt="" />
+          </button>
+          <div class="stores" id="stores"></div>
+        </div>
+      </section>
+
+      <!-- ── 게임소개 ── -->
+      <section id="contents" class="panel">
+        <header class="sec-head">
+          <h2 class="sec-title">게임소개</h2>
+        </header>
+        <div class="tabs tabs--features" id="featureTabs" role="tablist"></div>
+        <div class="carousel" id="carousel">
+          <button class="car-arrow car-arrow--prev" aria-label="이전"></button>
+          <div class="car-frame">
+            <div class="car-stage" id="carStage"></div>
+            <img class="car-frame-img" id="carFrameImg" alt="" />
+            <div class="car-dots" id="carDots"></div>
+          </div>
+          <button class="car-arrow car-arrow--next" aria-label="다음"></button>
+        </div>
+      </section>
+
+      <!-- ── 세계관 ── -->
+      <section id="story" class="story">
+        <div class="story-bg" id="storyBg"></div>
+        <header class="sec-head">
+          <h2 class="sec-title" id="storyTitle"></h2>
+        </header>
+        <div class="story-text" id="storyText"></div>
+      </section>
+
+      <!-- ── 히어로 (Spine) ── -->
+      <section id="character" class="panel">
+        <header class="sec-head">
+          <h2 class="sec-title sec-title--en" id="heroesTitle">HEROES</h2>
+        </header>
+        <div class="hero-grid" id="heroesRoot">
+          <canvas class="hero-canvas" id="heroesCanvas"></canvas>
+        </div>
+      </section>
+
+      <!-- ── 몬스터 (Spine) ── -->
+      <section id="monsters" class="panel monsters">
+        <header class="sec-head">
+          <h2 class="sec-title sec-title--en" id="monstersTitle">MONSTERS</h2>
+        </header>
+        <div class="mon-grid mon-grid--stack" id="monstersRoot">
+          <div class="mon-icons" role="group" aria-label="몬스터 선택"></div>
+          <div class="mon-stage">
+            <button type="button" class="mon-arrow mon-arrow--prev" aria-label="이전 몬스터"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="mon-portrait is-in"><canvas class="mon-canvas"></canvas></div>
+            <button type="button" class="mon-arrow mon-arrow--next" aria-label="다음 몬스터"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          </div>
+          <div class="mon-copy is-in">
+            <h3 class="mon-name"></h3>
+            <p class="mon-quote"></p>
+            <p class="mon-desc"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 미디어 ── -->
+      <section id="media" class="panel">
+        <header class="sec-head">
+          <h2 class="sec-title">미디어</h2>
+        </header>
+        <ul class="media-grid" id="mediaGrid"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="cta-trail" aria-hidden="true"></div>
+      <div class="footer-title"><img id="footerTitle" alt="" /></div>
+      <div class="footer-links" id="footerLinks"></div>
+      <div class="footer-lines" id="footerLines"></div>
+      <div class="footer-brand" id="footerBrand"></div>
+    </footer>
+
+    <!-- 영상 모달 -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-box">
+        <img class="modal-frame" id="modalFrame" alt="" />
+        <button class="modal-close" id="modalClose" aria-label="닫기"></button>
+        <div class="modal-screen"><div class="modal-body" id="modalBody"></div></div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
