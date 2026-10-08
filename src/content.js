@@ -56,7 +56,7 @@ export const logoEmblem = A('logo-emblem.png');
 // App Store 는 아직 출시 전 → 임시로 Google Play 링크. 출시되면 href 를 바꾸세요.
 export const stores = [
   { id: 'apple', top: 'App Store에서', bottom: '다운로드 하기', href: links.store },
-  { id: 'google', top: 'Google Play에서', bottom: '다운로드', href: links.store },
+  { id: 'google', top: 'Google Play에서', bottom: '다운로드 하기', href: links.store },
 ];
 
 // 상단 네비게이션 + 삼선 메뉴 공통 (섹션 순서대로). 외부 링크(다운로드)는 네비게이션 오른쪽 버튼으로
