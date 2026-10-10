@@ -1,0 +1,4 @@
+# Cloudflare 정적 자산 업로드 제외 목록 (빌드 시 dist 루트로 복사됨)
+.DS_Store
+**/.DS_Store
+.assetsignore
